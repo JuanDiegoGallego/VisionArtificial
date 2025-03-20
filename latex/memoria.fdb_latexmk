@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1742465985.25534 "/home/juandi/Desktop/ViA/Entregables/Memoria/VisionArtificial/latex/memoria.tex" "memoria.pdf" "memoria" 1742465986.12004 0
+["pdflatex"] 1742467199.85532 "/home/juandi/Desktop/ViA/Entregables/Memoria/VisionArtificial/latex/memoria.tex" "memoria.pdf" "memoria" 1742467200.69113 0
   "/etc/texmf/web2c/texmf.cnf" 1731001357.112 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/juandi/Desktop/ViA/Entregables/Memoria/VisionArtificial/latex/memoria.tex" 1742465984.09832 1706 0bec446b0eb440f296fcc7fe955e10f8 ""
+  "/home/juandi/Desktop/ViA/Entregables/Memoria/VisionArtificial/latex/memoria.tex" 1742467199.51907 2378 d0fca6e35579f381fffc3d38d220eb6c ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm" 1136768653 1324 c910af8c371558dc20f2d7822f66fe64 ""
@@ -69,10 +69,10 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1707919699 40399 f2c302f7d2af602abb742093540a5834 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1741793448.88681 5472669 54eaf61a88b6b7896ebd0dac973cb29c ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1741793506 8212361 f12e92ea296bf922951557bbd9d7f4e5 ""
-  "memoria.aux" 1742465986.042 756 722aa24789cd725f52397f23a794ca04 "pdflatex"
-  "memoria.out" 1742465986.044 388 2414cebd7e098f26dbd245ad0e419c70 "pdflatex"
-  "memoria.tex" 1742465984.09832 1706 0bec446b0eb440f296fcc7fe955e10f8 ""
-  "memoria.toc" 1742465986.044 298 75a608a6340f78002390568edd9c4712 "pdflatex"
+  "memoria.aux" 1742467200.6101 756 722aa24789cd725f52397f23a794ca04 "pdflatex"
+  "memoria.out" 1742467200.6121 388 2414cebd7e098f26dbd245ad0e419c70 "pdflatex"
+  "memoria.tex" 1742467199.51907 2378 d0fca6e35579f381fffc3d38d220eb6c ""
+  "memoria.toc" 1742467200.6121 298 75a608a6340f78002390568edd9c4712 "pdflatex"
   (generated)
   "memoria.aux"
   "memoria.log"
