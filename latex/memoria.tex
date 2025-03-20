@@ -120,7 +120,7 @@ Claro está que para que esto funcione el objeto a medir ha de estar lo más cen
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{images_calibracion/Tales.png}  % Cambia 'imagen_ejemplo.jpg' por el nombre de tu archivo
+    \includegraphics[width=0.6\textwidth]{images_calibracion/Tales.png}  
     \caption{Medidas sobre la imagen.}
     \label{fig:Tales}
 \end{figure}
@@ -133,7 +133,7 @@ El primer paso para la realización de la práctica es la calibración de la cá
 Para comenzar, he utilizado el programa 'stream.py' para tomar imágenes del patrón \ref{fig:cuadricula} desde una variedad de posiciones y ángulos \ref{fig:calibracion}. 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{images_calibracion/Calibracion.png}  % Cambia 'imagen_ejemplo.jpg' por el nombre de tu archivo
+    \includegraphics[width=0.4\textwidth]{images_calibracion/Calibracion.png}
     \caption{Fotografía tomada para calibración.}
     \label{fig:calibracion}
 \end{figure}
@@ -156,17 +156,17 @@ $$FOV_V = 2*arctan \left( \frac{h}{2f} \right) = 46.32^{\circ}$$
 Con este valor, podemos calcular la altura a la que tendríamos que situar la cámara para capturar por completo una pista de baloncesto.
 A partir de sus dimensiones ($28 \times 15$ metros):
 $$
-tan(\frac{FOV_H}{2}) = \frac{28/2}{h_1} \Rightarrow h_1 = \frac{14}{tan(FOV_H/2)}=24.5485625m
+tan \left( \frac{FOV_H}{2} \right) = \frac{28/2}{h_1} \Rightarrow h_1 = \frac{14}{tan(FOV_H/2)}=24.5485625m
 $$
 $$
-tan(\frac{FOV_V}{2}) = \frac{15/2}{h_2} \Rightarrow h_2 = \frac{7.5}{tan(FOV_V/2)}=17.5346875m
+tan \left( \frac{FOV_V}{2} \right) = \frac{15/2}{h_2} \Rightarrow h_2 = \frac{7.5}{tan(FOV_V/2)}=17.5346875m
 $$
 De entre los dos resultados tenemos que tomar el mayor, pues necesitamos que la pista se vea tanto a lo largo como a lo ancho.
 
 Buscando el tamaño del resto de líneas de la pista podemos hacer una representación en 3D que nos hace a la idea de la situación que experimentaría la cámara en estas condiciones \ref{fig:pista_basket}:
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{images_calibracion/Pista_basket.png}  % Cambia 'imagen_ejemplo.jpg' por el nombre de tu archivo
+    \includegraphics[width=0.4\textwidth]{images_calibracion/Pista_basket.png}
     \caption{Cámara sobre la pista de baloncesto.}
     \label{fig:pista_basket}
 \end{figure}
@@ -174,8 +174,51 @@ Como se puede observar, sobra espacio mas a allá bandas debido a que la altura 
 También se intuye que al estar a una determinada altura las canastas no son entran dentro de la pirámide que constituye el espacio de visión de la cámara.
 Aun así, posteriormente supondremos que las canastas se encuentran a nivel de suelo.
 
-Podemos aprovechar el modelo de la pista para simular el tamaño de una pelota de baloncesto situada a diferentes alturas del círculo central \ref{fig:pelota}. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{images_calibracion/Pelota.png}  
+    \caption{Pelota al 0\%, 25\%, 50\% y 80\% de la altura de la cámara.}
+    \label{fig:pelota}
+\end{figure}
 
+En la imagen anterior \ref{fig:pelota} aprovechamos el modelo de la pista para simular el tamaño de una pelota de baloncesto situada a diferentes alturas del círculo central.
+Para la primera instancia, el tamaño de la pelota ($48 cm$ de radio) es muy pequeño en comparación de la pista. En el tramo de 0\% a 50\% el tamaño aparente solo se duplica ya que esta magnitud es inversamente proporcional a la distancia a la cámara.
+Al 80\% de la distancia al suelo el tamaño se ha multiplicado por $5$. Para valores más altos la pelota empieza a ser demasiado grande como para caber en el espacio visual de la cámara.
+
+Cambiando de tema, vamos a explorar ahora las posibilidades de la relación
+$$
+\frac{u}{f} = \frac{X}{Z}
+$$
+utilizando la herramienta 'mouse.py' desarrollada en las prácticas que nos permite medir distancias en una imagen conociendo la matriz de calibración.
+
+En primer lugar, podemos predecir la altura en píxeles que tendrá una persona a una cierta distancia de la cámara. 
+Por ejemplo, en la imagen \ref{fig:altura_persona} aparezco yo mismo situado a $7.2$ metros de la cámara. Sabiendo que mi altura es de $1.74$ metros mi tamaño aparente debería de ser:
+$$u=\frac{X}{Z} \times f = \frac{1.74}{7.2} \times 561.11 = 135.60 px$$
+Por tanto, la altura medida entra dentro de la precisión esperada.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{images_calibracion/Altura_persona.png}  
+    \caption{Altura de una persona}
+    \label{fig:altura_persona}
+\end{figure}
+
+Por otro lado, vamos a intentar medir un objeto directamente con la cámara.
+Para ello, situamos un muñeco a $19.5cm$ de la cámara y utlizamos el mismo programa para medir su tamaño aparente \ref{fig:altura_objeto}.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{images_calibracion/Altura_objeto.png}  
+    \caption{Tamaño de un objeto}
+    \label{fig:altura_objeto}
+\end{figure}
+Con el dato de $279px$ utilizamos la misma relación para obtener el tamaño del muñeco:
+$$X = \frac{u}{f} \times Z= \frac{279}{561.11} \times 19.5 = 9.7 cm$$
+lo que coincide con el tamaño real con una precisión milimétrica.
+
+Lo último que podemos hacer directamente con esta relación es calcular la distancia a la que se encuentra un objeto cuyas dimensiones conocemos. Por ejemplo, un coche que mida 4 metros de largo y que ocupe 20 píxeles en pantalla estará a una distancia de:
+$$
+Z=\frac{561.11}{20}*4=112.2m
+$$
 
 \newpage
 
