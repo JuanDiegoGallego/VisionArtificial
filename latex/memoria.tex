@@ -220,6 +220,43 @@ $$
 Z=\frac{561.11}{20}*4=112.2m
 $$
 
+El programa 'angle.py' es una variación de 'mouse.py' que permite medir ángulos sobre una imagen. Esta medición se calcula sobre el segmento que une dos puntos seleccionados.
+Para ello, se completan las coordenadas sobre la imagen (con respecto al centro calculado en la matriz de calibración) con una tercera componente dada por la distancia focal.
+Después, el ángulo entre los dos puntos se deriva de la fórmula:
+$$
+\langle \vec{u},\vec{v} \rangle = |\vec{u}||\vec{v}| \cos(\widehat{\vec{u}\vec{v}})
+$$ 
+
+Con la capacidad de calcular ángulos sobre una imagen vamos a intentar triangular la posición desde la cual se ha tomado una fotografía \ref{fig:paisaje}. 
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.7\textwidth]{images_calibracion/Paisaje.png} 
+    \caption{Paisaje sobre el que triangular.}
+    \label{fig:paisaje}
+\end{figure}
+
+El primer paso para hacer la triangulación es elegir tres puntos distinguidos. En mi caso y debido a lo sencillos que son de reconocer serán:
+\begin{itemize}
+    \item[] $NC$: El poste del centro comercial Nueva Condomina
+    \item[] $TH$: El psote del centro comercial Thader
+    \item[] $MA$: El Cristo de Monteagudo
+\end{itemize}
+Para medir su distancia angular de la forma más precisa posible primero debemos fijar una línea recta sobre la cual tomar las medidas. En mi caso tomaré la línea del horizonte \ref{fig:paisaje_angulos}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{images_calibracion/Paisaje_angulos.png} 
+    \caption{Midiendo ángulos.}
+    \label{fig:paisaje_angulos}
+\end{figure}
+Eligiendo los puntos de esta línea (verde) más cercanos a los puntos seleccionados podemos determinar que el ángulo $NC-MA$ es de $37.162^{\circ}$ y el ángulo $TH-MA$ es de $28.287^{\circ}$. Con acceso a las distancias relativas entre estos puntos y conociendo desde dónde he tomado esta fotografía podemos ver en la imagen \ref{fig:geogebra_angulos} que el error absoluto no llega a los $0.6^{\circ}$. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{images_calibracion/Angulos_Geogebra.png} 
+    \caption{Ángulos reales.}
+    \label{fig:geogebra_angulos}
+\end{figure}
+
+
 \newpage
 
 % Sección 3: Filtros
@@ -238,7 +275,7 @@ Aquí se hablará sobre los clasificadores utilizados para la tarea específica.
 % Incluir la imagen
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.7\textwidth]{images_calibracion/Altura_objeto.png}  % Cambia 'imagen_ejemplo.jpg' por el nombre de tu archivo
+    \includegraphics[width=0.7\textwidth]{images_calibracion/Altura_objeto.png} 
     \caption{Una imagen de ejemplo.}
     \label{fig:imagen_ejemplo}
 \end{figure}
