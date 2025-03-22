@@ -137,6 +137,8 @@ Claro está que para que esto funcione el objeto a medir ha de estar lo más cen
 
 La realización de los ejercicios se puede ver en el notebook de python 'calibracion.ipynb'. 
 
+\subsubsection{Obtención de la matriz de calibración}
+
 El primer paso para la realización de la práctica es la calibración de la cámara. 
 Para comenzar, he utilizado el programa 'stream.py' para tomar imágenes del patrón \ref{fig:cuadricula} desde una variedad de posiciones y ángulos \ref{fig:calibracion}. 
 \begin{figure}[H]
@@ -157,6 +159,8 @@ K=
 \end{bmatrix}
 $$
 para una resolución de $640 \times 480$. Con los programas 'triangulate.py' y 'verify.py' podemos comprobar que el proceso se ha completado con éxito.
+
+\subsubsection{FOV y pista de baloncesto}
 
 Con la distancia focal obtenida podemos calcular el $FOV$ de la cámara:
 $$FOV_H = 2*arctan \left( \frac{w}{2f} \right) = 59.39^{\circ}$$ 
@@ -192,7 +196,9 @@ En la imagen anterior \ref{fig:pelota} aprovechamos el modelo de la pista para s
 Para la primera instancia, el tamaño de la pelota ($48 cm$ de diámetro) es muy pequeño en comparación de la pista. En el tramo de 0\% a 50\% el tamaño aparente solo se duplica ya que esta magnitud es inversamente proporcional a la distancia a la cámara.
 Al 80\% de la distancia al suelo el tamaño se ha multiplicado por $5$. Para valores más altos la pelota empieza a ser demasiado grande como para caber en el espacio visual de la cámara.
 
-Cambiando de tema, vamos a explorar ahora las posibilidades de la relación
+\subsubsection{Medir objetos}
+
+Vamos ahora a explorar ahora las posibilidades de la relación
 $$
 \frac{u}{f} = \frac{X}{Z}
 $$
@@ -227,6 +233,8 @@ $$
 Z=\frac{561.11}{20}*4=112.2m
 $$
 
+\subsubsection{Triangulación}
+
 El programa 'angle.py' es una variación de 'mouse.py' que permite medir ángulos sobre una imagen. Esta medición se calcula sobre el segmento que une dos puntos seleccionados.
 Para ello, se completan las coordenadas sobre la imagen (con respecto al centro calculado en la matriz de calibración) con una tercera componente dada por la distancia focal.
 Después, el ángulo entre los dos puntos se deriva de la fórmula:
@@ -235,7 +243,7 @@ $$
 $$ 
 
 Con la capacidad de calcular ángulos sobre una imagen vamos a intentar triangular la posición desde la cual se ha tomado una fotografía \ref{fig:paisaje}. 
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{images_calibracion/Paisaje.png} 
     \caption{Paisaje sobre el que triangular.}
@@ -258,7 +266,7 @@ Para medir su distancia angular de la forma más precisa posible primero debemos
 Eligiendo los puntos de esta línea (verde) más cercanos a los puntos seleccionados podemos determinar que el ángulo $NC-MA$ es de $37.162^{\circ}$ y el ángulo $TH-MA$ es de $28.287^{\circ}$. Con acceso a las distancias relativas entre estos puntos y conociendo desde dónde he tomado esta fotografía podemos ver en la imagen \ref{fig:geogebra_angulos} que el error absoluto no llega a los $0.6^{\circ}$. 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{images_calibracion/Angulos_Geogebra.png} 
+    \includegraphics[width=0.8\textwidth]{images_calibracion/Angulos_Geogebra.png} 
     \caption{Ángulos reales.}
     \label{fig:geogebra_angulos}
 \end{figure}
@@ -268,16 +276,61 @@ El último fragmento de código del notebook 'calibracion.ipynb' calcula los res
 Trasladando los datos a la calculadora gráfica de Geogebra y teniendo en cuenta la posición relativa de los puntos observados para desambiguar entre las dos posibles intersecciones obtenemos una aproximación al punto real con una precisión de unos $89$ metros \ref{fig:geogebra_triangulacion}.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{images_calibracion/Triangulacion_Geogebra.png} 
+    \includegraphics[width=0.8\textwidth]{images_calibracion/Triangulacion_Geogebra.png} 
     \caption{Triangulación.}
     \label{fig:geogebra_triangulacion}
 \end{figure}
+
 \newpage
 
 % Sección 3: Filtros
 \section{Filtros}
-En esta sección se describen los diferentes filtros utilizados en el proceso de procesamiento de imágenes. Los filtros son herramientas esenciales para mejorar la calidad de las imágenes antes de aplicar técnicas de visión artificial más avanzadas.
 
+\subsection{Filtros: Marco Teórico}
+
+Un filtro de imagen es una transformación que se aplica a la misma para modificar o extraer algunos aspectos de la misma. 
+El valor del filtrado para cada píxel se calcula a partir de un entorno o vecindad del mismo.
+Los filtros se pueden clasificar según de la manera que se apliquen o de los efectos que tengan en la iamgen.
+Para el desarrollo de este ejercicio destacamos las clases:
+\begin{itemize}
+    \item[--] Filtros de suavizado: atenuan el ruido y revierten la discretización de la imagen. De ahí el calificativo de 'suave', ya que aproximan un conjunto de valores discretos a una curva suave.
+    \item[--] Filtros de detección de bordes: resaltan los perfiles de los objetos de una imagen destacando las transiciones entre ellos.
+    \item[--] Filtros lineales: el valor de un pixel se calcula como combinación lineal de sus elementos vecinos.
+    \item[--] Filtros no lineales: el cálculo del filtro no se realiza como una combinación lineal de sus elementos vecinos.
+\end{itemize}
+En esta sección comentaremos el funcionamiento de los filtros y en la siguiente hablaremos de sus efectos en la imagen.
+
+\subsubsection{Filtro de medias}
+
+El filtro de medias es un filtro lineal de suavizado. 
+Para cada píxel, se calcula como una operación de promedio sobre una vecindad del mismo.
+Esta vecindad es un área $3\times 3$, $5\times 5$... centrada en el píxel.
+Un ejemplo de cálculo del filtro para una vecindad $3\times 3$ en una imagen con un solo canal de color podría ser:
+$$
+\begin{bmatrix}
+0 & 100 & 133 \\
+24 & 112 & 67 \\
+3 & 129 & 33
+\end{bmatrix}
+\Rightarrow \frac{0+100+133+24+112+67+3+129+33}{9} = 66,78
+$$
+Para píxeles del borde existen formas de adaptar sus vecindades como completar con ceros o sustituirlas por los rectángulos sobrantes.
+La complejidad óptima en tiempo y en espacio para el cálculo de este filtro para una imagen de $n\times m$ píxeles con vecindades de tamaño $k \times k$ es $O(n\times m)$. 
+Para conseguir esta complejidad es necesario mantener una matriz auxiliar de sumas acumuladas para calcular las sumas en rangos en $O(1)$.
+
+\subsubsection{Filtro Gaussiano}
+El filtro Gaussiano es otro filtro lineal de suavizado que se define mediante una función gaussiana discreta. Dadas las coordenadas relativas (x,y) de un píxel al central, el coeficiente por el que se multiplica es:
+$$
+    G(x,y) = \frac{1}{2 \pi \sigma^2}e^\frac{-x^2-y^2}{2\sigma^2}
+$$
+donde $\sigma$ es la desviación típica de la distribución y el parámetro que determina la cantidad de suavizado.
+
+La principal diferencia de este filtro con el anterior es que mientras que en el filtro de medias todos los píxeles tienen el mismo peso, el filtro gaussiano da mayor peso a los píxeles más próximos al central.
+Además, la distribución gaussiana en dos dimensiones tiene dos propiedades muy deseables:
+\begin{enumerate}
+    \item Separabilidad: el filtro puede ser descompuesto en dos filtros unidimensionales $G(x,y) = G_1(x) \times G_2(y)$ donde $G_1$ y $G_2$ son las distribuciones para las filas y las columnas respectivamente.
+    \item Cascading: dadas dos distribuciones gaussianas con desviaciones típicas $\sigma_1$ y $\sigma_2$ se cumple que la distibución gaussiana con desviación típica 
+\end{enumerate}
 
 
 \newpage

@@ -5,5 +5,12 @@
 \contentsline {section}{\numberline {2}Calibración}{5}{section.2}%
 \contentsline {subsection}{\numberline {2.1}Calibración: Marco Teórico}{5}{subsection.2.1}%
 \contentsline {subsection}{\numberline {2.2}Calibración: Resultados}{8}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}Obtención de la matriz de calibración}{8}{subsubsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2}FOV y pista de baloncesto}{9}{subsubsection.2.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.3}Medir objetos}{11}{subsubsection.2.2.3}%
+\contentsline {subsubsection}{\numberline {2.2.4}Triangulación}{13}{subsubsection.2.2.4}%
 \contentsline {section}{\numberline {3}Filtros}{16}{section.3}%
-\contentsline {section}{\numberline {4}Clasificador}{17}{section.4}%
+\contentsline {subsection}{\numberline {3.1}Filtros: Marco Teórico}{16}{subsection.3.1}%
+\contentsline {subsubsection}{\numberline {3.1.1}Filtro de medias}{16}{subsubsection.3.1.1}%
+\contentsline {subsubsection}{\numberline {3.1.2}Filtro Gaussiano}{17}{subsubsection.3.1.2}%
+\contentsline {section}{\numberline {4}Clasificador}{18}{section.4}%

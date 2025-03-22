@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1742663507.8284 "/home/juandi/Desktop/ViA/Entregables/Memoria/VisionArtificial/latex/memoria.tex" "memoria.pdf" "memoria" 1742663508.51357 0
+["pdflatex"] 1742674440.45655 "/home/juandi/Desktop/ViA/Entregables/Memoria/VisionArtificial/latex/memoria.tex" "memoria.pdf" "memoria" 1742674441.20359 0
   "/etc/texmf/web2c/texmf.cnf" 1731001357.112 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/juandi/Desktop/ViA/Entregables/Memoria/VisionArtificial/latex/memoria.tex" 1742663507.65379 16229 5495621098f68c7f7c93fa78e1269b7c ""
+  "/home/juandi/Desktop/ViA/Entregables/Memoria/VisionArtificial/latex/memoria.tex" 1742674440.26132 19429 56cbcc2bb45373e500ad7a57128734b5 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -28,8 +28,10 @@
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb" 1248133631 35469 70d41d2b9ea31d5d813066df7c99281c ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb" 1248133631 32722 d7379af29a190c3f453aba36302ff5a9 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb" 1248133631 32362 179c33bbf43f19adbb3825bb4e36e57a ""
+  "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb" 1248133631 32734 69e00a6b65cedb993666e42eedb3d48f ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb" 1248133631 32726 0a1aea6fcd6468ee2cf64d891f5c43c8 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1248133631 32569 5e5ddc8df908dea60932f3c484a54c0d ""
+  "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb" 1248133631 32587 1788b0c1c5b39540c96f5e42ccd6dae8 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb" 1248133631 32626 4f5c1b83753b1dd3a97d1b399a005b4b ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb" 1248133631 34694 ad62b13721ee8eda1dcc8993c8bd7041 ""
   "/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii" 1461363279 71627 94eb9990bed73c364d7f53f960cc8c5b ""
@@ -106,11 +108,11 @@
   "images_calibracion/Pista_basket.png" 1742488709.55522 65741 f854d793655c0f2b62ceb90419d9a55e ""
   "images_calibracion/Tales.png" 1742483619.11306 15834 243f350e476e7c6dd0d7a7c7eccab142 ""
   "images_calibracion/Triangulacion_Geogebra.png" 1742662806.18443 27935 b161a6367e8eb8cb298c583ce1ecd6e6 ""
-  "memoria.aux" 1742663508.45888 4243 bfe74020fedc6fe1a979a0705e8b3ec5 "pdflatex"
-  "memoria.lof" 1742663508.45988 1399 aebd40f70d8fbab923ee3eb1f5b16454 "pdflatex"
-  "memoria.out" 1742663508.45988 980 10d869ca267a780eedead7af42f799cf "pdflatex"
-  "memoria.tex" 1742663507.65379 16229 5495621098f68c7f7c93fa78e1269b7c ""
-  "memoria.toc" 1742663508.45988 599 3ccf912f99df9d4295d9c35d1a0a31b4 "pdflatex"
+  "memoria.aux" 1742674441.14332 5203 ddb01f70804cad58191cc419ee9caf4d "pdflatex"
+  "memoria.lof" 1742674441.14532 1399 c5b75e4c037ee1abf9b6af023b82b244 "pdflatex"
+  "memoria.out" 1742674441.14532 2212 d2143aa000bcaf53dec119808e5cdb09 "pdflatex"
+  "memoria.tex" 1742674440.26132 19429 56cbcc2bb45373e500ad7a57128734b5 ""
+  "memoria.toc" 1742674441.14532 1272 5c2d480990e1c0e0b3d8f290434ee86d "pdflatex"
   (generated)
   "memoria.aux"
   "memoria.lof"
