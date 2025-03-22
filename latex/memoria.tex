@@ -49,7 +49,15 @@ La sección Marco Teórico servirá como resumen de los contenidos teóricos des
 A continuación, en el apartado de Resultados se hablará del trabajo realizado (código y pruebas) y de cómo se han aplicado los conocimientos teóricos.
 Finalmente, la sección Comentarios se reserva para realizar alguna reflexión y plasmar las conclusiones y opiniones sobre el ejercio.
 
-Las imágenes incluidas son capturas de pantalla de Geogebra clásico (www.geogebra.org/classic?lang=es) y Geogebra 3D (www.geogebra.org/3d?lang=es), material de la asignatura, gráficas de matplotlib e imágenes tomadas con un Google Pixel 8 Pro.
+Las imágenes incluidas son extraídas de:
+\begin{itemize}
+    \item Geogebra clásico: www.geogebra.org/classic?lang=es
+    \item Geogebra 3D: www.geogebra.org/3d?lang=es
+    \item Material de la asignatura: material de la asignatura
+    \item Gráficas generadas con matplotlib
+    \item Cámara de un Google Pixel 8 Pro
+    \item Google Earth
+\end{itemize}
 
 A lo largo del documento se hará mención a una serie de scripts de python desarrollados por el profesor Alberto Ruiz. Estos scripts se encuentran en el repositorio de GitHub albertoruiz/umucv/ (revisado el 20/03/2025).
 
@@ -61,7 +69,7 @@ A lo largo del documento se hará mención a una serie de scripts de python desa
 \subsection{Calibración: Marco Teórico}
 
 Una cámara es un dispositivo compuesto esencialmente por una lente que enfoca luz en un plano de proyección.
-Ese plano de proyección físico se sitúa detraś de la lente y de forma invertida. Tras deshacer la inversión, los dispositivos de visualización presentan la imagen en la orientación correcta.
+Ese plano de proyección físico se sitúa detrás de la lente y tomando la imagen de forma invertida. Tras deshacer la inversión, los dispositivos de visualización presentan la imagen en la orientación correcta.
 Nótese que el proceso de reconstrucción de la imagen genera un plano de proyección virtual con las mismas dimensiones y a la misma distancia a la lente que el plano real \ref{fig:Modelo_camara}.
 
 \begin{figure}[h!]
@@ -116,7 +124,7 @@ También, a partir del FOV se deduce la unidad angular mínima medible como $\fr
 La última propiedad que necesitamos para la realización de la práctica es la relación entre tamaño, tamaño aparente, distancia a la lente y distancia focal.
 Esta la podemos obtener aplicando el Teorema de Tales aplicado a los triángulos formados por el foco de la cámara y los pares de extremos reales y virtuales del objeto proyectado \ref{fig:Tales}. 
 
-Claro está que para que esto funcione el objeto a medir ha de estar lo más centrado posible, ya que en los extremos de la imagen se produce distorsión. En las imagenes tomadas para este documento se ha intentado centrar lo máximo posible las imagenes evitando así dicho efecto.
+Claro está que para que esto funcione el objeto a medir ha de estar lo más centrado posible, ya que en los extremos de la imagen se produce distorsión. En las imágenes tomadas para este proyecto se han intentado centrar lo máximo posible los objetos de interés evitando así dicho efecto.
 
 \begin{figure}[H]
     \centering
@@ -153,8 +161,7 @@ para una resolución de $640 \times 480$. Con los programas 'triangulate.py' y '
 Con la distancia focal obtenida podemos calcular el $FOV$ de la cámara:
 $$FOV_H = 2*arctan \left( \frac{w}{2f} \right) = 59.39^{\circ}$$ 
 $$FOV_V = 2*arctan \left( \frac{h}{2f} \right) = 46.32^{\circ}$$
-Con este valor, podemos calcular la altura a la que tendríamos que situar la cámara para capturar por completo una pista de baloncesto.
-A partir de sus dimensiones ($28 \times 15$ metros):
+Con este valor, podemos calcular la altura a la que tendríamos que situar la cámara para capturar por completo una pista de baloncesto a partir de sus dimensiones ($28 \times 15$ metros):
 $$
 tan \left( \frac{FOV_H}{2} \right) = \frac{28/2}{h_1} \Rightarrow h_1 = \frac{14}{tan(FOV_H/2)}=24.5485625m
 $$
@@ -182,7 +189,7 @@ Aun así, posteriormente supondremos que las canastas se encuentran a nivel de s
 \end{figure}
 
 En la imagen anterior \ref{fig:pelota} aprovechamos el modelo de la pista para simular el tamaño de una pelota de baloncesto situada a diferentes alturas del círculo central.
-Para la primera instancia, el tamaño de la pelota ($48 cm$ de radio) es muy pequeño en comparación de la pista. En el tramo de 0\% a 50\% el tamaño aparente solo se duplica ya que esta magnitud es inversamente proporcional a la distancia a la cámara.
+Para la primera instancia, el tamaño de la pelota ($48 cm$ de diámetro) es muy pequeño en comparación de la pista. En el tramo de 0\% a 50\% el tamaño aparente solo se duplica ya que esta magnitud es inversamente proporcional a la distancia a la cámara.
 Al 80\% de la distancia al suelo el tamaño se ha multiplicado por $5$. Para valores más altos la pelota empieza a ser demasiado grande como para caber en el espacio visual de la cámara.
 
 Cambiando de tema, vamos a explorar ahora las posibilidades de la relación
@@ -256,7 +263,15 @@ Eligiendo los puntos de esta línea (verde) más cercanos a los puntos seleccion
     \label{fig:geogebra_angulos}
 \end{figure}
 
-
+Utilizando Google Earth para calcular las distancias entre los tres puntos, los ángulos medidos y el Teorema del Ángulo exterior tenemos ya todo lo necesario para terminar la triangulación.
+El último fragmento de código del notebook 'calibracion.ipynb' calcula los respectivos centros y radios de las dos circunferencias en cuya intersección se encuentra el punto desde el que se toma la fotografía, fijando el punto $TH$ como origen de coordenadas y el eje $TH \rightarrow MA$ como dirección positiva del eje de abcisas.
+Trasladando los datos a la calculadora gráfica de Geogebra y teniendo en cuenta la posición relativa de los puntos observados para desambiguar entre las dos posibles intersecciones obtenemos una aproximación al punto real con una precisión de unos $89$ metros \ref{fig:geogebra_triangulacion}.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{images_calibracion/Triangulacion_Geogebra.png} 
+    \caption{Triangulación.}
+    \label{fig:geogebra_triangulacion}
+\end{figure}
 \newpage
 
 % Sección 3: Filtros

@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1742576687.32122 "/home/juandi/Desktop/ViA/Entregables/Memoria/VisionArtificial/latex/memoria.tex" "memoria.pdf" "memoria" 1742576688.00243 0
+["pdflatex"] 1742663507.8284 "/home/juandi/Desktop/ViA/Entregables/Memoria/VisionArtificial/latex/memoria.tex" "memoria.pdf" "memoria" 1742663508.51357 0
   "/etc/texmf/web2c/texmf.cnf" 1731001357.112 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/juandi/Desktop/ViA/Entregables/Memoria/VisionArtificial/latex/memoria.tex" 1742576687.14738 15054 bfaacb913a288bb4eb757996d9e37cd5 ""
+  "/home/juandi/Desktop/ViA/Entregables/Memoria/VisionArtificial/latex/memoria.tex" 1742663507.65379 16229 5495621098f68c7f7c93fa78e1269b7c ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -105,11 +105,12 @@
   "images_calibracion/Pelota.png" 1742490583.18313 75774 0575582e9c19ffe496f7c2602cde375c ""
   "images_calibracion/Pista_basket.png" 1742488709.55522 65741 f854d793655c0f2b62ceb90419d9a55e ""
   "images_calibracion/Tales.png" 1742483619.11306 15834 243f350e476e7c6dd0d7a7c7eccab142 ""
-  "memoria.aux" 1742576687.94336 4037 787869b5ea8a3cee4254033710749438 "pdflatex"
-  "memoria.lof" 1742576687.94436 1311 f1b4e7b6ee8f6a833d5700e6fb9aeaae "pdflatex"
-  "memoria.out" 1742576687.94436 980 10d869ca267a780eedead7af42f799cf "pdflatex"
-  "memoria.tex" 1742576687.14738 15054 bfaacb913a288bb4eb757996d9e37cd5 ""
-  "memoria.toc" 1742576687.94436 599 3415d108bb127b5964454cc780161dfe "pdflatex"
+  "images_calibracion/Triangulacion_Geogebra.png" 1742662806.18443 27935 b161a6367e8eb8cb298c583ce1ecd6e6 ""
+  "memoria.aux" 1742663508.45888 4243 bfe74020fedc6fe1a979a0705e8b3ec5 "pdflatex"
+  "memoria.lof" 1742663508.45988 1399 aebd40f70d8fbab923ee3eb1f5b16454 "pdflatex"
+  "memoria.out" 1742663508.45988 980 10d869ca267a780eedead7af42f799cf "pdflatex"
+  "memoria.tex" 1742663507.65379 16229 5495621098f68c7f7c93fa78e1269b7c ""
+  "memoria.toc" 1742663508.45988 599 3ccf912f99df9d4295d9c35d1a0a31b4 "pdflatex"
   (generated)
   "memoria.aux"
   "memoria.lof"
