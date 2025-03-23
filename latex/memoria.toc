@@ -13,4 +13,10 @@
 \contentsline {subsection}{\numberline {3.1}Filtros: Marco Teórico}{16}{subsection.3.1}%
 \contentsline {subsubsection}{\numberline {3.1.1}Filtro de medias}{16}{subsubsection.3.1.1}%
 \contentsline {subsubsection}{\numberline {3.1.2}Filtro Gaussiano}{17}{subsubsection.3.1.2}%
-\contentsline {section}{\numberline {4}Clasificador}{18}{section.4}%
+\contentsline {subsubsection}{\numberline {3.1.3}Filtro bilateral}{17}{subsubsection.3.1.3}%
+\contentsline {subsubsection}{\numberline {3.1.4}Filtro de medianas, mínimos y máximos}{18}{subsubsection.3.1.4}%
+\contentsline {subsubsection}{\numberline {3.1.5}Filtros de borde}{18}{subsubsection.3.1.5}%
+\contentsline {subsection}{\numberline {3.2}Filtros: Resultados}{18}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Filtro de medias}{19}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Filtro gaussiano}{20}{subsection.3.4}%
+\contentsline {section}{\numberline {4}Clasificador}{21}{section.4}%

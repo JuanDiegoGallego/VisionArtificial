@@ -329,8 +329,69 @@ La principal diferencia de este filtro con el anterior es que mientras que en el
 Además, la distribución gaussiana en dos dimensiones tiene dos propiedades muy deseables:
 \begin{enumerate}
     \item Separabilidad: el filtro puede ser descompuesto en dos filtros unidimensionales $G(x,y) = G_1(x) \times G_2(y)$ donde $G_1$ y $G_2$ son las distribuciones para las filas y las columnas respectivamente.
-    \item Cascading: dadas dos distribuciones gaussianas con desviaciones típicas $\sigma_1$ y $\sigma_2$ se cumple que la distibución gaussiana con desviación típica 
+    \item Cascading: aplicar dos filtros gaussianos con desviaciones típicas $\sigma_1$ y $\sigma_2$ tiene el mismo efecto que aplicar un filtro con desviación típica $\sigma = \sqrt{\sigma_{1}^{2} + \sigma_{2}^{2}}$
 \end{enumerate}
+La primera propiedad permite reducir la complejidad temporal en la aplicación del filtro de $O(n \times m \times k^2)$ a $O(n \times m \times k)$ donde $k$ es el tamaño de vecindad que OpenCV considera apropiado para un $\sigma$ dado.
+
+\subsubsection{Filtro bilateral}
+
+Un filtro bilateral es un filtro no lineal de suavizado que preserva los bordes. 
+Además de utilizar la proximidad espacial, también tiene en cuenta la cercanía de los colores a la hora de dar más o menos peso a píxeles vecinos.
+El efecto que se consigue es el suavizado del ruido y de las texturas de los objetos mientras que los bordes que los separan aparecen inalterados. 
+Al no ser un filtro lineal y dependiente de la estadística de la imagen resulta difícil encontrar una optimización. Así pues, este es el filtro más lento en su aplicación, como veremos más adelante.
+Su complejidad temporal es $O(n \times m \times k^2)$
+
+\subsubsection{Filtro de medianas, mínimos y máximos}
+
+Como su propio nombre indica, estos filtros utilizan la mediana, el mínimo y el máximimo de una vecindad como filtro.
+Claramente, son filtros no lineales. El de medianas se puede considerar como un filtro de eliminación de ruido granular ya que permite discriminar valores extremos de una distribución.
+Los filtros de mínimos y máximos son sensibles a píxeles oscuros y luminosos.
+
+\subsubsection{Filtros de borde}
+Para la realización de este ejercicio se han añadido dos filtros lineales que permiten la visualización de bordes.
+El primero permite detectar bordes horizontales convolucionando con el núcleo $[-1,0,1]$. En texturas uniformes, el resultado de aplicar este filtro da números cercanos a 0.
+El segundo es un laplaciando discreto de tamaño $3\times 3$ el cual permite detectar bordes en todas las direcciones.
+
+\subsection{Filtros: Resultados}
+Para este ejercicio se ha desarrollado el script 'filtros.py'. 
+Al iniciarlo, se muestra una ventana con el dispositivo de entrada elegido y se muestra por terminal un mensaje que sugiere pulsar la tecla 'h' para mostrar la ventana de ayuda \ref{fig:menu_ayuda}.
+
+La aplicación permite:
+\begin{itemize}
+    \item[--] Seleccionar hasta 8 filtros diferentes (teclas 1 a 8) o mostrar la fuente sin alterar (0)
+    \item[--] Alternar entre la vista en color y en escala de grises (tecla c)
+    \item[--] Aplicar el filtro únicamente a una región de interest (ROI) rectangular seleccionada con el ratón o a la imagen completa (tecla r)
+    \item[--] Desmarcar la región de interés (tecla x)
+    \item[--] Invertir los colores (tecla i)
+    \item[--] Pausar el vídeo (tecla SPACE)
+    \item[--] Tomar una captura de pantalla (tecla s)
+    \item[--] Mostrar el menú de ayuda (tecla h)
+    \item[--] Cerrar la aplicación (tecla q)
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{images_filtros/Menu_ayuda.png} 
+    \caption{Menu de ayuda en filtros.py.}
+    \label{fig:menu_ayuda}
+\end{figure}
+
+\subsection{Filtro de medias}
+Pulsando la tecla '1' seleccionamos el filtro de medias o de caja. 
+Con el slider RAD podemos controlar el tamaño de las vecindades. 
+Como vemos en \ref{fig:box_filter}, se consigue el efecto de suavizado o desenfoque. 
+Al sobrepasar cierto radio, algunos de los elementos de la imagen dejan de intuirse como algunos puntos negros de la pelota, el hueco de la cantimplora o la pantalla del teléfono.
+Esto es debido a que su grosor es pequeño comparado con el radio. También se intuyen líneas verticales y horizontales artificiales consecuencia de tomar vecindades perfectamente cuadradas y contar con solo dos direcciones de filtrado. 
+En cuanto a la latencia, podemos observar en la esquina superior izquierda de la pantalla que es del orden de $1$ milisegundo, resultando altamente eficiente. Además, esta latencia no varía con el tamaño de vecindad elegido como se comentaba en la sección previa.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{images_filtros/box_filter.png} 
+    \caption{Filtro de medias.}
+    \label{fig:box_filter}
+\end{figure}
+
+\subsection{Filtro gaussiano}
+
 
 
 \newpage
